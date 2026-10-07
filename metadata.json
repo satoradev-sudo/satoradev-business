@@ -1,0 +1,6 @@
+{
+  "name": "Satora.dev | Digital Experiences, Software & AI Systems",
+  "description": "Satora.dev brings website design, software development, custom AI chatbots, automation and digital marketing together to turn business problems into usable digital results.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
