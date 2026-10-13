@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @layer base {
   :root {
     --font-display: 'Syne', sans-serif;
@@ -8,10 +12,23 @@
   }
   
   body {
+    min-width: 320px;
     font-family: var(--font-sans);
     background-color: #050811;
     color: #F1F5F9;
-    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+  }
+
+  input, select, textarea {
+    min-width: 0;
   }
   
   h1, h2, h3, h4, .font-display {
@@ -127,5 +144,4 @@
 .colorful-glow-orb-3 {
   background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.1) 45%, transparent 70%);
 }
-
 

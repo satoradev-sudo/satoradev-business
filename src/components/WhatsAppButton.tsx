@@ -11,7 +11,7 @@ export const WhatsAppButton: React.FC = () => {
   )}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+    <div className="fixed bottom-3 right-3 z-40 flex max-w-[calc(100vw-1.5rem)] flex-col items-end sm:bottom-6 sm:right-6 sm:max-w-none">
       {/* Floating Expanded Popover */}
       <AnimatePresence>
         {isOpen && (
@@ -19,7 +19,7 @@ export const WhatsAppButton: React.FC = () => {
             initial={{ opacity: 0, y: 15, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.95 }}
-            className="mb-3 w-80 p-5 rounded-3xl bg-[#090E1A]/95 border border-emerald-500/40 backdrop-blur-2xl shadow-[0_10px_40px_rgba(16,185,129,0.25)] space-y-3 text-left"
+            className="mb-3 w-[min(20rem,calc(100vw-1.5rem))] p-4 sm:p-5 rounded-3xl bg-[#090E1A]/95 border border-emerald-500/40 backdrop-blur-2xl shadow-[0_10px_40px_rgba(16,185,129,0.25)] space-y-3 text-left"
           >
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
               <div className="flex items-center gap-2.5">
@@ -70,7 +70,8 @@ export const WhatsAppButton: React.FC = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-xs shadow-[0_0_25px_rgba(16,185,129,0.4)] border border-emerald-300/40 cursor-pointer group"
+        aria-label="Open Satora.dev WhatsApp chat"
+        className="flex items-center gap-2.5 px-3 sm:px-4 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-xs shadow-[0_0_25px_rgba(16,185,129,0.4)] border border-emerald-300/40 cursor-pointer group"
       >
         <WhatsAppIcon size={18} color="#052e16" />
         <span className="hidden sm:inline">Chat on WhatsApp</span>

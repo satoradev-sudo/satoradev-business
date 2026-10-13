@@ -191,9 +191,9 @@ export const KnowledgeDeskDemo: React.FC = () => {
       {/* Main Container */}
       <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.08]">
         {/* Chat Area */}
-        <div className="lg:col-span-2 flex flex-col h-[480px]">
+        <div className="lg:col-span-2 flex min-w-0 flex-col h-[min(480px,65dvh)] min-h-[360px]">
           {/* Messages list */}
-          <div className="flex-1 p-6 overflow-y-auto space-y-4">
+          <div className="flex-1 min-h-0 p-3 sm:p-6 overflow-y-auto space-y-4">
             {messages.map((m) => (
               <div
                 key={m.id}
@@ -208,7 +208,7 @@ export const KnowledgeDeskDemo: React.FC = () => {
                 )}
 
                 <div
-                  className={`max-w-xl rounded-xl p-4 ${
+                  className={`min-w-0 max-w-[90%] sm:max-w-xl rounded-xl p-3 sm:p-4 ${
                     m.sender === 'user'
                       ? 'bg-cyan-500 text-slate-950 font-medium'
                       : m.isRefusal
@@ -260,7 +260,7 @@ export const KnowledgeDeskDemo: React.FC = () => {
               e.preventDefault();
               handleQuery(inputQuery);
             }}
-            className="p-4 border-t border-white/[0.08] bg-slate-900/50 flex items-center gap-2"
+            className="p-3 sm:p-4 border-t border-white/[0.08] bg-slate-900/50 flex items-center gap-2"
           >
             <input
               type="text"
@@ -272,7 +272,7 @@ export const KnowledgeDeskDemo: React.FC = () => {
             <button
               type="submit"
               disabled={isTyping}
-              className="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 text-slate-950 font-semibold text-xs rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="shrink-0 px-3 sm:px-4 py-2 bg-cyan-500 hover:bg-cyan-400 disabled:opacity-50 text-slate-950 font-semibold text-xs rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Query</span>

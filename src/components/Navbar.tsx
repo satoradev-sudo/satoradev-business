@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight, Sparkles, Terminal } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 import { SatoraLogo } from './SatoraLogo';
 
 interface NavbarProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
-  onOpenDiscovery: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentTab,
-  setCurrentTab,
-  onOpenDiscovery
+  setCurrentTab
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,17 +34,17 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Top subtle neon line */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-cyan-400/80 via-purple-500/80 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-[4.5rem] py-2 flex items-center justify-between gap-3">
         {/* Zone 1: Brand title with official transparent logo */}
         <button
           onClick={() => handleNavClick('overview')}
-          className="text-left group flex items-center focus:outline-none cursor-pointer"
+          className="text-left group flex min-w-0 items-center focus:outline-none cursor-pointer"
         >
           <SatoraLogo size="md" />
         </button>
 
         {/* Zone 2: 4-6 clean text navigation links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-7">
           {navLinks.map((link) => {
             const isActive = currentTab === link.id;
             return (
@@ -71,26 +69,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Zone 3: 1-2 primary actions */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Zone 3: primary inquiry action */}
+        <div className="hidden xl:flex items-center gap-3">
           <motion.button
-            whileHover={{ scale: 1.03, y: -1 }}
+            whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
-            onClick={onOpenDiscovery}
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-[0_0_25px_rgba(6,182,212,0.35)] focus:ring-2 focus:ring-cyan-400/50 focus:outline-none whitespace-nowrap cursor-pointer border border-cyan-300/30"
+            onClick={() => handleNavClick('contact')}
+            className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 rounded-xl hover:from-cyan-200 hover:to-blue-300 transition-all shadow-[0_0_18px_rgba(6,182,212,0.55),0_0_38px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.75),0_0_48px_rgba(59,130,246,0.45)] focus:ring-2 focus:ring-cyan-200/70 focus:outline-none whitespace-nowrap cursor-pointer border border-cyan-100/70"
           >
-            <Sparkles className="w-3.5 h-3.5 text-cyan-200 animate-pulse" />
-            <span>Scope Diagnostic</span>
+            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            <span>Discuss Your Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </motion.button>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="xl:hidden flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
-            onClick={onOpenDiscovery}
-            className="px-3 py-1.5 text-xs font-medium text-cyan-300 bg-cyan-950/60 border border-cyan-700/60 rounded-lg shadow-sm"
+            onClick={() => handleNavClick('contact')}
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-300 to-blue-400 border border-cyan-100/60 rounded-lg shadow-[0_0_16px_rgba(6,182,212,0.55)]"
           >
-            Scope
+            <Sparkles className="w-3 h-3" />
+            Discuss
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -109,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-white/[0.08] bg-[#070B18]/98 backdrop-blur-2xl px-5 pt-3 pb-6"
+            className="xl:hidden border-b border-white/[0.08] bg-[#070B18]/98 backdrop-blur-2xl px-3 sm:px-5 pt-3 pb-6"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -129,12 +129,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="pt-3 border-t border-white/[0.06] mt-2">
                 <button
                   onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenDiscovery();
+                    handleNavClick('contact');
                   }}
-                  className="w-full py-3 px-4 text-center text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl shadow-lg"
+                  className="w-full py-3 px-4 text-center text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-xl shadow-[0_0_22px_rgba(6,182,212,0.5)]"
                 >
-                  Launch Scope Diagnostic
+                  Discuss Your Project
                 </button>
               </div>
             </div>

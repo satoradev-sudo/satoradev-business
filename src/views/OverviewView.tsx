@@ -15,7 +15,6 @@ import {
   FileText,
   ExternalLink,
   ChevronRight,
-  ArrowUpRight,
   Flame,
   Zap,
   Activity
@@ -28,13 +27,66 @@ import {
 } from '../data/companyData';
 import { ServiceFlowDemo } from '../components/demos/ServiceFlowDemo';
 import { KnowledgeDeskDemo } from '../components/demos/KnowledgeDeskDemo';
-import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 interface OverviewViewProps {
   setCurrentTab: (tab: string) => void;
   onOpenDiscovery: () => void;
   onSelectServiceTopic?: (topic: string) => void;
 }
+
+const aiAgentSolutions = [
+  {
+    title: 'AI Customer Support & Sales Agent',
+    description: 'Answer customer questions, explain products and services, collect inquiries, qualify leads, and hand conversations to your team when needed.'
+  },
+  {
+    title: 'AI Marketing Agent',
+    description: 'Help your team draft social posts and ad copy, plan campaigns, and review approved campaign data for performance opportunities.'
+  },
+  {
+    title: 'AI Business Management Assistant',
+    description: 'Make sales, customer, inventory, order, and employee information easier to understand with summaries, reports, and suggested priorities.'
+  },
+  {
+    title: 'AI Lead Management & CRM Agent',
+    description: 'Capture inquiries, organize and qualify prospects, update your CRM, and prepare or send follow-ups under your approved rules.'
+  },
+  {
+    title: 'AI E-commerce Assistant',
+    description: 'Help shoppers compare products, answer questions, retrieve authorized order updates, and discover relevant items.'
+  },
+  {
+    title: 'AI Appointment & Booking Agent',
+    description: 'Answer common questions, check availability, schedule appointments, and send confirmations or reminders through supported integrations.'
+  },
+  {
+    title: 'AI Website Generation Tools',
+    description: 'Turn a business brief into proposed page structures, content drafts, and design directions for human review before publication.'
+  }
+];
+
+const aiPilotSteps = [
+  {
+    title: 'Understand your workflow',
+    description: 'Identify the repetitive task, the people involved, and the outcome you need.'
+  },
+  {
+    title: 'Define the scope',
+    description: 'Agree on integrations, authorized actions, costs, and success criteria.'
+  },
+  {
+    title: 'Build and demonstrate',
+    description: 'Develop a working prototype using suitable test data.'
+  },
+  {
+    title: 'Test and connect',
+    description: 'Review accuracy, permissions, failure handling, and human handoff before deployment.'
+  },
+  {
+    title: 'Monitor and improve',
+    description: 'Refine the workflow as your team uses it and your business needs change.'
+  }
+];
 
 export const OverviewView: React.FC<OverviewViewProps> = ({
   setCurrentTab,
@@ -161,7 +213,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
   ];
 
   return (
-    <div className="space-y-28 pb-20 relative overflow-hidden">
+    <div className="space-y-16 sm:space-y-28 pb-16 sm:pb-20 relative overflow-hidden">
       {/* Background Animated Neon Glow Orbs */}
       <div className="absolute top-10 left-1/4 w-[500px] h-[500px] colorful-glow-orb-1 blur-[130px] rounded-full pointer-events-none animate-pulse-glow" />
       <div className="absolute top-80 right-10 w-[600px] h-[600px] colorful-glow-orb-2 blur-[150px] rounded-full pointer-events-none animate-pulse-glow" style={{ animationDelay: '3s' }} />
@@ -194,11 +246,11 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] text-balance"
+                className="font-display text-3xl min-[390px]:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] text-balance"
               >
-                Design. Build. Connect.{' '}
+                AI Agents That Connect Your Business and{' '}
                 <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent animate-gradient-text drop-shadow-[0_0_30px_rgba(6,182,212,0.4)]">
-                  Grow.
+                  Get Work Done.
                 </span>
               </motion.h1>
 
@@ -209,7 +261,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl"
               >
-                A business can have an attractive website and still struggle with disconnected tools, slow follow-up, or unmeasured marketing. Satora.dev unites website engineering, custom SaaS, RAG-grounded AI, and digital growth to turn business problems into usable digital results.
+                Satora.dev builds custom AI agents that connect with your website, database, CRM, and business systems. From answering customer questions to managing inquiries and coordinating follow-ups, we automate everyday work within the permissions you approve.
               </motion.p>
 
               {/* Primary Call to Actions (matching reference design layout) */}
@@ -222,25 +274,24 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 <motion.button
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => setCurrentTab('lab')}
+                  onClick={() => onSelectServiceTopic
+                    ? onSelectServiceTopic('AI Solutions & Automation')
+                    : onOpenDiscovery()}
                   className="px-6 py-3.5 bg-gradient-to-r from-cyan-950 via-slate-900 to-blue-950 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl transition-all shadow-[0_0_25px_rgba(6,182,212,0.25)] flex items-center gap-2 cursor-pointer border border-cyan-400/40"
                 >
-                  <span>Explore Flagship Products</span>
+                  <span>Discuss Your AI Project</span>
                   <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
                 </motion.button>
 
-                <motion.a
+                <motion.button
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  href="https://wa.me/8801714722651?text=Hello%20Satora.dev%2C%20I%20would%20like%20to%20discuss%20a%20project%20inquiry."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-semibold text-xs rounded-xl transition-all shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center gap-2.5 cursor-pointer border border-emerald-400/50"
+                  onClick={() => setCurrentTab('lab')}
+                  className="px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.1] text-white font-semibold text-xs rounded-xl transition-all flex items-center gap-2 cursor-pointer border border-white/[0.12]"
                 >
-                  <WhatsAppIcon size={16} color="#FFFFFF" />
-                  <span>Chat on WhatsApp</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
-                </motion.a>
+                  <span>Explore Our Demos</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-cyan-300" />
+                </motion.button>
               </motion.div>
 
               {/* Two Floating Flagship Concept Cards (matching reference image style) */}
@@ -427,6 +478,9 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
             ))}
           </div>
         </motion.div>
+        <p className="mt-4 text-xs text-slate-500 leading-relaxed">
+          Available integrations, delivery timelines, and ongoing hosting, API, or messaging costs are confirmed during scoping. Concept demos illustrate possible workflows and are identified separately from deployed client systems.
+        </p>
       </section>
 
       {/* Section 04: The 5 Core Services Bento Grid */}
@@ -517,7 +571,9 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
 
                   <motion.button
                     whileTap={{ scale: 0.95 }}
-                    onClick={onOpenDiscovery}
+                    onClick={() => onSelectServiceTopic
+                      ? onSelectServiceTopic('AI Solutions & Automation')
+                      : onOpenDiscovery()}
                     className="text-xs px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 transition-colors cursor-pointer border border-white/[0.06]"
                   >
                     {serv.ctaLabel}
@@ -526,6 +582,115 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </motion.div>
             );
           })}
+        </div>
+      </section>
+
+      {/* AI Agents: business use cases, guardrails, and a focused pilot path */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-left space-y-3"
+        >
+          <span className="text-xs font-mono-code text-cyan-400 font-semibold tracking-wider uppercase">
+            Connected AI for Practical Workflows
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            AI Solutions for Your Business
+          </h2>
+          <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+            Start with one useful task. We connect agents to the tools and information they need, with clear permissions, operating limits, and a route to human review.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {aiAgentSolutions.map((solution, index) => (
+            <motion.article
+              key={solution.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.04 }}
+              className="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-white/[0.08] hover:border-cyan-400/40 transition-colors space-y-3"
+            >
+              <div className="w-8 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-purple-400" />
+              <h3 className="text-base font-semibold text-white">{solution.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{solution.description}</p>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-cyan-950/50 to-slate-900/70 border border-cyan-400/20 space-y-4">
+            <span className="text-xs font-mono-code text-cyan-300 uppercase tracking-wider font-semibold">
+              More Than a Chatbot
+            </span>
+            <h3 className="text-2xl font-bold text-white">From answers to approved actions</h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              A chatbot answers questions. A connected AI agent can also carry out defined actions—updating records, routing inquiries, checking availability, and coordinating tasks. Your team stays in control of what the agent can access and do.
+            </p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {['Clear permissions', 'Operating limits', 'Human review'].map((guardrail) => (
+                <span key={guardrail} className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs text-slate-200">
+                  {guardrail}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-white/[0.08] space-y-4">
+            <span className="text-xs font-mono-code text-purple-300 uppercase tracking-wider font-semibold">
+              A Focused Pilot
+            </span>
+            <h3 className="text-2xl font-bold text-white">Start With One Useful Workflow</h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              You do not need to automate your entire business at once. We begin with a specific problem and build a focused pilot.
+            </p>
+            <ol className="space-y-3">
+              {aiPilotSteps.map((step, index) => (
+                <li key={step.title} className="flex items-start gap-3">
+                  <span className="w-6 h-6 shrink-0 rounded-lg bg-purple-500/15 border border-purple-400/30 text-purple-200 flex items-center justify-center text-xs font-mono-code">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">{step.title}</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed mt-0.5">{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+
+        <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.08] space-y-5">
+          <div>
+            <span className="text-xs font-mono-code text-emerald-300 uppercase tracking-wider font-semibold">
+              One Connected Business Journey
+            </span>
+            <h3 className="text-2xl font-bold text-white mt-2">AI, Websites, and Marketing Working Together</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              {
+                title: 'AI Agents, Chatbots & Automation',
+                description: 'Handle inquiries and connect everyday workflows.'
+              },
+              {
+                title: 'Web Design & Development',
+                description: 'Build the website and interfaces your customers and team use.'
+              },
+              {
+                title: 'Digital Marketing & SEO',
+                description: 'Help relevant customers discover your business and measure their response.'
+              }
+            ].map((service) => (
+              <div key={service.title} className="p-4 rounded-2xl bg-slate-900/60 border border-white/[0.06] space-y-2">
+                <h4 className="text-sm font-semibold text-white">{service.title}</h4>
+                <p className="text-xs text-slate-300 leading-relaxed">{service.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -719,10 +884,10 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               Collaborative Scoping
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              Ready to Connect Your Digital Workflow?
+              Let’s Find Your First Automation Opportunity
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Whether you need a clear website, an MVP software portal, an approved-content AI assistant, or a growth diagnostic, we define a practical next step with no invented promises.
+              Tell us which task takes too much time, where inquiries get delayed, or which systems need to work together. We’ll help define a practical next step.
             </p>
           </div>
 
@@ -733,18 +898,18 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               onClick={onOpenDiscovery}
               className="px-6 py-3.5 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 text-slate-950 font-bold text-xs rounded-xl transition-all shadow-[0_0_25px_rgba(34,211,238,0.4)] cursor-pointer"
             >
-              Launch Scope Diagnostic
+              Discuss Your Project
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                setCurrentTab('contact');
+                setCurrentTab('lab');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.1] text-white border border-white/[0.12] font-semibold text-xs rounded-xl transition-all cursor-pointer"
             >
-              Contact Us Directly
+              Explore Our Demos
             </motion.button>
           </div>
         </motion.div>

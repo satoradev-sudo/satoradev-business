@@ -42,7 +42,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({
   ];
 
   return (
-    <div className="space-y-20 pb-20 relative overflow-hidden">
+    <div className="space-y-12 sm:space-y-20 pb-16 sm:pb-20 relative overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute top-24 left-1/4 w-[500px] h-[500px] colorful-glow-orb-1 blur-[140px] pointer-events-none opacity-40" />
       <div className="absolute top-[800px] right-10 w-[500px] h-[500px] colorful-glow-orb-2 blur-[140px] pointer-events-none opacity-40" />
@@ -85,7 +85,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-8 sm:p-12 rounded-3xl bg-slate-900/70 border border-white/[0.08] space-y-8 backdrop-blur-md shadow-2xl relative overflow-hidden"
+          className="p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl bg-slate-900/70 border border-white/[0.08] space-y-6 sm:space-y-8 backdrop-blur-md shadow-2xl relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -126,7 +126,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div 
             whileHover={{ y: -3 }}
-            className="p-8 rounded-3xl bg-cyan-950/20 border border-cyan-500/30 space-y-3 shadow-lg"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-cyan-950/20 border border-cyan-500/30 space-y-3 shadow-lg"
           >
             <span className="text-xs font-mono-code text-cyan-300 uppercase tracking-wider font-semibold flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
@@ -139,7 +139,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({
 
           <motion.div 
             whileHover={{ y: -3 }}
-            className="p-8 rounded-3xl bg-purple-950/20 border border-purple-500/30 space-y-3 shadow-lg"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-purple-950/20 border border-purple-500/30 space-y-3 shadow-lg"
           >
             <span className="text-xs font-mono-code text-purple-300 uppercase tracking-wider font-semibold flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5" />
@@ -301,7 +301,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           whileHover={{ borderColor: "rgba(6, 182, 212, 0.4)" }}
-          className="p-8 rounded-3xl bg-slate-950/80 border border-white/[0.08] flex items-start gap-4 shadow-xl"
+          className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-950/80 border border-white/[0.08] flex items-start gap-4 shadow-xl"
         >
           <ShieldCheck className="w-6 h-6 text-cyan-400 shrink-0 mt-1" />
           <div className="space-y-2 text-xs text-slate-400 leading-relaxed">

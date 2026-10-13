@@ -84,7 +84,7 @@ export const MethodologyView: React.FC<MethodologyViewProps> = ({
   ];
 
   return (
-    <div className="space-y-20 pb-20 relative overflow-hidden">
+    <div className="space-y-12 sm:space-y-20 pb-16 sm:pb-20 relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-20 right-10 w-[500px] h-[500px] colorful-glow-orb-2 blur-[140px] pointer-events-none opacity-40" />
       <div className="absolute bottom-20 left-10 w-[500px] h-[500px] colorful-glow-orb-1 blur-[140px] pointer-events-none opacity-40" />
@@ -167,7 +167,7 @@ export const MethodologyView: React.FC<MethodologyViewProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="p-8 rounded-3xl bg-slate-900/70 border border-cyan-500/30 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center backdrop-blur-md shadow-2xl relative overflow-hidden"
+            className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/70 border border-cyan-500/30 grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center backdrop-blur-md shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -302,7 +302,7 @@ export const MethodologyView: React.FC<MethodologyViewProps> = ({
 
       {/* Client Partnership Principles */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/[0.06] space-y-6">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.02] border border-white/[0.06] space-y-6">
           <div className="space-y-1">
             <span className="text-xs font-mono-code text-cyan-400 uppercase tracking-wider font-semibold">
               Mutual Commitment

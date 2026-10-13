@@ -91,7 +91,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
   const currentColor = getServiceColor(activeService.id);
 
   return (
-    <div className="space-y-16 pb-20 relative overflow-hidden">
+    <div className="space-y-10 sm:space-y-16 pb-16 sm:pb-20 relative overflow-hidden">
       {/* Background glowing orb */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] colorful-glow-orb-2 blur-[150px] pointer-events-none opacity-50" />
       <div className="absolute bottom-1/3 left-0 w-[500px] h-[500px] colorful-glow-orb-1 blur-[150px] pointer-events-none opacity-50" />
@@ -166,7 +166,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
             {/* Main 2-Column Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Overview Card */}
-              <div className={`p-8 rounded-3xl bg-slate-900/70 border ${currentColor.border} space-y-6 shadow-xl relative overflow-hidden backdrop-blur-md`}>
+              <div className={`p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/70 border ${currentColor.border} space-y-5 sm:space-y-6 shadow-xl relative overflow-hidden backdrop-blur-md`}>
                 <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl ${currentColor.gradient} blur-3xl pointer-events-none`} />
 
                 <div className="flex items-center justify-between relative z-10">
@@ -198,7 +198,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
               </div>
 
               {/* Deliverables Breakdown */}
-              <div className="p-8 rounded-3xl bg-slate-900/50 border border-white/[0.08] space-y-6 shadow-lg backdrop-blur-md">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/50 border border-white/[0.08] space-y-5 sm:space-y-6 shadow-lg backdrop-blur-md">
                 <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
                   <FileCode className={`w-5 h-5 ${currentColor.text}`} />
                   <span>What We Deliver & Support</span>
@@ -219,13 +219,13 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
               </div>
 
               {/* Evidence & Acceptance Standards */}
-              <div className="p-8 rounded-3xl bg-slate-900/50 border border-white/[0.08] space-y-6 shadow-lg backdrop-blur-md">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900/50 border border-white/[0.08] space-y-5 sm:space-y-6 shadow-lg backdrop-blur-md">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                  <h3 className="text-sm sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
                     <ShieldCheck className="w-5 h-5 text-emerald-400" />
                     <span>Evidence & Acceptance Standards</span>
                   </h3>
-                  <span className="text-xs font-mono-code text-slate-400">Section 18 Compliant</span>
+                  <span className="text-[10px] sm:text-xs font-mono-code text-slate-400 text-right">Section 18 Compliant</span>
                 </div>
 
                 <p className="text-xs text-slate-300 leading-relaxed">

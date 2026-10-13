@@ -208,9 +208,9 @@ export const ServiceFlowDemo: React.FC = () => {
         </div>
       ) : (
         /* Team Workspace View */
-        <div className="p-6 space-y-6">
+        <div className="p-3 sm:p-6 space-y-6">
           {/* Quick Submit Test Inquiry */}
-          <form onSubmit={handleAddSampleInquiry} className="flex flex-col sm:flex-row items-center gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+          <form onSubmit={handleAddSampleInquiry} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
             <input
               type="text"
               placeholder="Simulate receiving inquiry (e.g. Horizon Logistics, Apex Institute)..."
@@ -221,7 +221,7 @@ export const ServiceFlowDemo: React.FC = () => {
             <select
               value={newInquiryType}
               onChange={(e) => setNewInquiryType(e.target.value)}
-              className="bg-slate-900/80 border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-slate-300 focus:outline-none"
+              className="w-full sm:w-auto bg-slate-900/80 border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-slate-300 focus:outline-none"
             >
               <option value="Service Businesses">Service Businesses</option>
               <option value="Training Providers">Training Providers</option>
@@ -239,13 +239,13 @@ export const ServiceFlowDemo: React.FC = () => {
           </form>
 
           {/* Pipeline Stages Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-3">
             {stages.map((st) => {
               const leadsInStage = leads.filter(l => l.stage === st.key);
               return (
                 <div
                   key={st.key}
-                  className="rounded-xl bg-white/[0.02] border border-white/[0.06] p-3 flex flex-col min-h-[300px]"
+                  className="min-w-0 rounded-xl bg-white/[0.02] border border-white/[0.06] p-3 flex flex-col min-h-[240px]"
                 >
                   <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/[0.06]">
                     <span className="text-xs font-semibold text-slate-300 font-mono-code">

@@ -21,8 +21,9 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['overview', 'services', 'lab', 'methodology', 'company', 'contact'].includes(hash)) {
-        setCurrentTab(hash);
+      const tab = hash.split(/[/?]/)[0];
+      if (['overview', 'services', 'lab', 'methodology', 'company', 'contact'].includes(tab)) {
+        setCurrentTab(tab);
       }
     };
 
@@ -50,7 +51,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050811] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-200 relative">
+    <div className="min-h-screen w-full min-w-0 bg-[#050811] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-200 relative">
       {/* Animated Constellation & Orbital Background (matching reference screenshot) */}
       <ConstellationBackground />
 
@@ -58,11 +59,10 @@ export default function App() {
       <Navbar
         currentTab={currentTab}
         setCurrentTab={handleTabChange}
-        onOpenDiscovery={() => setIsDiscoveryOpen(true)}
       />
 
       {/* Main View Container with Animated Page Transitions */}
-      <main className="flex-1 w-full overflow-hidden">
+      <main className="flex-1 w-full min-w-0 overflow-x-clip">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentTab}

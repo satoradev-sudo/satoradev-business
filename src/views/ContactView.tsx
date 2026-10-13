@@ -96,7 +96,9 @@ ${workflowDetails}
 `Hello Satora.dev,
 I am submitting a project inquiry:
 Name: ${name || 'Prospective Client'}
+Email: ${email || 'N/A'}
 Organization: ${org || 'N/A'}
+Website: ${currentUrl || 'N/A'}
 Inquiry Focus: ${inquiryType}
 Timeframe: ${timeframe}
 Details: ${workflowDetails || 'Looking to discuss a new project.'}`
@@ -107,8 +109,6 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // Trigger direct mail client dispatch to satoradev@gmail.com
-    window.location.href = buildMailtoUrl();
   };
 
   return (
@@ -125,9 +125,9 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
           className="flex items-center gap-2 text-xs font-mono-code text-cyan-400"
         >
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-          <span>Inquiry & Engagement Protocol</span>
+          <span>Project Inquiry</span>
           <span className="text-slate-600">/</span>
-          <span>Response Guaranteed &lt; 24h</span>
+          <span>Tell Us What You Need</span>
         </motion.div>
 
         <motion.h1 
@@ -136,11 +136,11 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
           transition={{ delay: 0.1 }}
           className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-display"
         >
-          Let's Define a Practical Next Step
+          Tell Us About Your Project
         </motion.h1>
 
         <p className="text-base text-slate-300 max-w-3xl leading-relaxed">
-          Tell us what your business needs to do better: explain its services, launch a product, connect a workflow, answer repeated questions, or build a measurable growth channel. Inquiries are transmitted directly to <strong className="text-cyan-300 font-mono-code font-normal">satoradev@gmail.com</strong> or our instant WhatsApp line.
+          Share the task you want to improve, the systems involved, and the outcome you need. After completing the form, choose email or WhatsApp to open a prefilled message for review and sending.
         </p>
       </section>
 
@@ -153,7 +153,7 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="p-8 sm:p-10 rounded-3xl bg-slate-900/70 border border-white/[0.08] shadow-2xl backdrop-blur-md relative overflow-hidden"
+              className="p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-slate-900/70 border border-white/[0.08] shadow-2xl backdrop-blur-md relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -167,16 +167,16 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
                     <Check className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-white font-display">
-                    Project Inquiry Prepared for Transmission
+                    Choose How to Send Your Inquiry
                   </h3>
                   <p className="text-sm text-slate-200 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong>{name}</strong>. Your inquiry for <strong>{inquiryType}</strong> is routed directly to <strong className="text-cyan-300 font-mono-code">satoradev@gmail.com</strong>.
+                    Thank you, <strong>{name}</strong>. Your inquiry for <strong>{inquiryType}</strong> is ready. Your details have not been sent yet—choose an option below, review the prefilled message, and press send in your email or WhatsApp app.
                   </p>
 
-                  <div className="pt-4 flex flex-wrap justify-center gap-3">
+                  <div className="pt-4 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
                     <a
                       href={buildMailtoUrl()}
-                      className="px-5 py-2.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white flex items-center gap-2 shadow-lg cursor-pointer"
+                      className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.35)] cursor-pointer"
                     >
                       <Mail className="w-4 h-4" />
                       <span>Send to satoradev@gmail.com</span>
@@ -186,7 +186,7 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
                       href={buildWhatsAppUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold flex items-center gap-2 shadow-lg cursor-pointer"
+                      className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.35)] cursor-pointer"
                     >
                       <WhatsAppIcon className="w-4 h-4" color="#022c22" />
                       <span>Send via WhatsApp (+880 1714-722651)</span>
@@ -203,7 +203,7 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 relative z-10">
                   {/* Select Inquiry Topic */}
                   <div className="space-y-2">
                     <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider font-mono-code">
@@ -335,24 +335,14 @@ Details: ${workflowDetails || 'Looking to discuss a new project.'}`
                     </button>
 
                     <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                      <a
-                        href={buildWhatsAppUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="py-3 px-4 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/50 text-emerald-300 font-semibold text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
-                      >
-                        <WhatsAppIcon className="w-4 h-4" color="#25D366" />
-                        <span>WhatsApp Quick Send</span>
-                      </a>
-
                       <motion.button
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         type="submit"
-                        className="flex-1 sm:flex-initial py-3 px-6 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs rounded-xl transition-all shadow-[0_0_25px_rgba(6,182,212,0.35)] flex items-center justify-center gap-2 cursor-pointer border border-cyan-400/30 whitespace-nowrap"
+                        className="w-full sm:flex-1 py-3 px-4 sm:px-6 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-xs rounded-xl transition-all shadow-[0_0_25px_rgba(6,182,212,0.35)] flex items-center justify-center gap-2 cursor-pointer border border-cyan-400/30"
                       >
                         <Send className="w-3.5 h-3.5" />
-                        <span>Transmit to satoradev@gmail.com</span>
+                        <span>Continue to Send Inquiry</span>
                       </motion.button>
                     </div>
                   </div>
